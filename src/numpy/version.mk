@@ -1,0 +1,4 @@
+NAME = opt-numpy
+VERSION = 1.6.0
+ARCHIVENAME = numpy
+RELEASE = 1
