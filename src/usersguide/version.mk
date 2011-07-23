@@ -1,5 +1,4 @@
 ROLL			= python
-VERSION			= 1.0
 NAME    		= roll-$(ROLL)-usersguide
 RELEASE			= 0
 
