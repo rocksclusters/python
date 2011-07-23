@@ -4,10 +4,11 @@
 <title>Copyrights</title>
 
 <section id="python-copyright" xreflabel="python">
-<title>Your title here</title>
+<title>Copyrights</title>
 
 <para>
-This product includes software developed ...
+This product includes software developed by the Rocks Clusters group
+from UC San Diego, and by the Python Software Foundation.
 </para>
 
 <para>
@@ -15,9 +16,6 @@ The software contained in this distribution is released under the academic
 license agreement which requires to acknowledge the use of the software 
 that results in any published work. 
 </para>
-
-
 </section>
-
-
+&source-roll-python2-copyright;
 </chapter>

@@ -4,15 +4,18 @@
 <title>Using the python Roll</title>
 
 <section id="using-python" xreflabel="Using the python roll">
-<title>Using the python Roll</title>
+<title>Using the Python Roll</title>
 
+<para>The Python roll installs Python versions 2.7.2 and 3.2.1. These
+are installed in <filename class="directory">/opt/python</filename>.
+</para>
+<para><emphasis>Numpy</emphasis> is compiled and installed with Python 2.7.2.
+</para>
 <para>
 Tutorials for using python and its components are available
-from the <ulink url="http://link-here.html">
-python web site</ulink>
+from the <ulink url="http://www.python.org">
+Python website</ulink>
 </para>
 
 </section>
-
-
 </chapter>
