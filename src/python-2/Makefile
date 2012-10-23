@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.3 2012/05/06 05:49:19 phil Exp $
+# $Id: Makefile,v 1.4 2012/10/23 01:15:06 clem Exp $
 #
 # @Copyright@
 # 
@@ -55,6 +55,10 @@
 # @Copyright@
 #
 # $Log: Makefile,v $
+# Revision 1.4  2012/10/23 01:15:06  clem
+# fix for compilation of sqlite3 module in python 2.7.3
+# http://bugs.python.org/issue14572
+#
 # Revision 1.3  2012/05/06 05:49:19  phil
 # Copyright Storm for Mamba
 #
@@ -76,6 +80,8 @@ RPM.EXTRAS += "AutoReqProv: no"
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
+	#http://bugs.python.org/issue14572
+	cd $(ARCHIVENAME)-$(VERSION); patch -p1 < ../patch-sqlite3-Python-2.7.3
 	( 					\
 		cd $(ARCHIVENAME)-$(VERSION);	\
 		./configure --prefix=$(PKGROOT);\
