@@ -1,4 +1,4 @@
-# $Id: bootstrap.sh,v 1.4 2012/11/27 00:49:12 phil Exp $
+# $Id: bootstrap.sh,v 1.5 2012/12/14 21:54:16 clem Exp $
 
 # @Copyright@
 # 
@@ -55,6 +55,9 @@
 # @Copyright@
 
 # $Log: bootstrap.sh,v $
+# Revision 1.5  2012/12/14 21:54:16  clem
+# adding sqlite-devel to the boostrap so that support to slite3 is built into python
+#
 # Revision 1.4  2012/11/27 00:49:12  phil
 # Copyright Storm for Emerald Boa
 #
@@ -70,6 +73,10 @@
 #
 
 . $ROCKSROOT/src/roll/etc/bootstrap-functions.sh
+
+
+#this is required only to compile sqlite3 support in python
+yum install sqlite-devel
 
 compile python-2
 install opt-python-27
