@@ -1,4 +1,3 @@
-# $Id: Makefile,v 1.5 2012/11/27 00:49:12 phil Exp $
 #
 # @Copyright@
 # 
@@ -54,52 +53,14 @@
 # 
 # @Copyright@
 #
-# $Log: Makefile,v $
-# Revision 1.5  2012/11/27 00:49:12  phil
-# Copyright Storm for Emerald Boa
 #
-# Revision 1.4  2012/10/23 01:15:06  clem
-# fix for compilation of sqlite3 module in python 2.7.3
-# http://bugs.python.org/issue14572
-#
-# Revision 1.3  2012/05/06 05:49:19  phil
-# Copyright Storm for Mamba
-#
-# Revision 1.2  2011/07/23 02:31:16  phil
-# Viper Copyright
-#
-# Revision 1.1  2011/06/03 00:18:48  anoop
-# Python Roll.
-#
-# Include python 2.7.1 and python 3.2
 #
 
-REDHAT.ROOT = $(CURDIR)/../../
+set new_LD_PATH=/opt/python/lib
 
--include $(ROCKSROOT)/etc/Rules.mk
-include Rules.mk
 
-RPM.EXTRAS += "AutoReqProv: no"
+echo ${LD_LIBRARY_PATH} | /bin/grep -q ${new_LD_PATH} 
+if ( $? != 0) then
+       	setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:${new_LD_PATH}"
+endif
 
-build:
-	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
-	#http://bugs.python.org/issue14572
-	cd $(ARCHIVENAME)-$(VERSION); patch -p1 < ../patch-sqlite3-Python-2.7.3
-	( 					\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		./configure --enable-shared --prefix=$(PKGROOT);\
-		$(MAKE);			\
-	)
-	
-install::
-	mkdir -p $(ROOT)/$(PKGROOT)
-	(									\
-		cd $(ARCHIVENAME)-$(VERSION);					\
-		$(MAKE) DESTDIR=$(ROOT) altinstall;				\
-		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 				\
-	)
-	mkdir -p $(ROOT)/etc/profile.d
-	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
-
-clean::
-	rm -rf $(ARCHIVENAME)-$(VERSION)
