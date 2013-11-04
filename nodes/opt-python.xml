@@ -34,6 +34,7 @@
 
 	<package>opt-python-27</package>
 	<package>opt-python-3</package>
+	<package>opt-python-modules</package>
 	<package>roll-python-usersguide</package>
 
 	<package>opt-numpy</package>

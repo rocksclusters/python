@@ -76,3 +76,6 @@
 include Rolls.mk
 
 default: roll
+
+clean::
+	-rm -fr src/build*

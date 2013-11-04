@@ -93,11 +93,25 @@ build:
 	
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
+	mkdir -p $(REDHAT.ROOT)/src/build-python-modules
 	(									\
 		cd $(ARCHIVENAME)-$(VERSION);					\
 		$(MAKE) DESTDIR=$(ROOT) altinstall;				\
 		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 				\
+		cd $(ROOT)/$(PKGROOT)/bin;                                      \
+		ln -s 2to3-3.2 2to3; 						\
+		ln -s idle3.2 idle3; 						\
+		ln -s pydoc3.2 pydoc3; 						\
+		ln -s python3.2m-config python3.2-config; 			\
+		ln -s python3.2-config python3-config; 				\
+		ln -s python3.2 python3; 					\
+		ln -s python2 python; 						\
+		ln -s python2.7 python2; 					\
+		ln -s python2.7-config python2-config; 				\
+		ln -s python2-config python-config; 				\
 	)
+	cat python.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/python!g;s!VERSION!$(VERSION)!g" \
+	> $(REDHAT.ROOT)/src/build-python-modules/python.module
 	mkdir -p $(ROOT)/etc/profile.d
 	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
 

@@ -1,0 +1,21 @@
+#!/bin/bash
+/bin/mkdir -m 0755 -p ROOT_PKGROOTMODULEROOT
+
+cat > ROOT_PKGROOTMODULEROOT/VERSION <<END
+#%Module1.0
+module-whatis "python"
+module-whatis "Version: 2.7.3 and 3.2.1"
+prepend-path PATH /opt/python/bin
+prepend-path LD_LIBRARY_PATH /opt/python/lib
+prepend-path LIBPATH /opt/python/lib
+END
+
+chmod 0644  ROOT_PKGROOTMODULEROOT/VERSION
+
+cat > ROOT_PKGROOTMODULEROOT/.version.VERSION <<END
+#%Module1.0
+set ModulesVersion "VERSION"
+END
+
+(cd ROOT_PKGROOTMODULEROOT; if test ! -e .version; then /bin/ln -s .version.VERSION .version; fi )
+
