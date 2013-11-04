@@ -1,13 +1,13 @@
-# $Id: Makefile,v 1.5 2012/11/27 00:49:12 phil Exp $
+#
+# $Id$
 #
 # @Copyright@
 # 
-# 				Rocks(r)
+# 				Rocks(tm)
 # 		         www.rocksclusters.org
-# 		         version 5.6 (Emerald Boa)
-# 		         version 6.1 (Emerald Boa)
+# 		        version 4.3 (Mars Hill)
 # 
-# Copyright (c) 2000 - 2013 The Regents of the University of California.
+# Copyright (c) 2000 - 2011 The Regents of the University of California.
 # All rights reserved.	
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,7 @@
 # 3. All advertising and press materials, printed or electronic, mentioning
 # features or use of this software must display the following acknowledgement: 
 # 
-# 	"This product includes software developed by the Rocks(r)
+# 	"This product includes software developed by the Rocks(tm)
 # 	Cluster Group at the San Diego Supercomputer Center at the
 # 	University of California, San Diego and its contributors."
 # 
@@ -53,67 +53,25 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 # @Copyright@
-#
-# $Log: Makefile,v $
-# Revision 1.5  2012/11/27 00:49:12  phil
-# Copyright Storm for Emerald Boa
-#
-# Revision 1.4  2012/10/23 01:15:06  clem
-# fix for compilation of sqlite3 module in python 2.7.3
-# http://bugs.python.org/issue14572
-#
-# Revision 1.3  2012/05/06 05:49:19  phil
-# Copyright Storm for Mamba
-#
-# Revision 1.2  2011/07/23 02:31:16  phil
-# Viper Copyright
-#
-# Revision 1.1  2011/06/03 00:18:48  anoop
-# Python Roll.
-#
-# Include python 2.7.1 and python 3.2
-#
 
-REDHAT.ROOT = $(CURDIR)/../../
+REDHAT.ROOT     = $(PWD)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-RPM.EXTRAS += "AutoReqProv: no"
 
 build:
-	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
-	#http://bugs.python.org/issue14572
-	cd $(ARCHIVENAME)-$(VERSION); patch -p1 < ../patch-sqlite3-Python-2.7.3
-	( 					\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		./configure --enable-shared --prefix=$(PKGROOT);\
-		$(MAKE);			\
-	)
-	
+
 install::
-	mkdir -p $(ROOT)/$(PKGROOT)
-	mkdir -p $(REDHAT.ROOT)/src/build-python-modules
-	(									\
-		cd $(ARCHIVENAME)-$(VERSION);					\
-		$(MAKE) DESTDIR=$(ROOT) altinstall;				\
-		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 				\
-		cd $(ROOT)/$(PKGROOT)/bin;                                      \
-		ln -s 2to3-3.2 2to3; 						\
-		ln -s idle3.2 idle3; 						\
-		ln -s pydoc3.2 pydoc3; 						\
-		ln -s python3.2m-config python3.2-config; 			\
-		ln -s python3.2-config python3-config; 				\
-		ln -s python3.2 python3; 					\
-		ln -s python2 python; 						\
-		ln -s python2.7 python2; 					\
-		ln -s python2.7-config python2-config; 				\
-		ln -s python2-config python-config; 				\
-	)
-	cat python.module | perl -pi -e "s!MODULEROOT!/opt/modulefiles/applications/python!g;s!VERSION!$(VERSION)!g" \
-	> $(REDHAT.ROOT)/src/build-python-modules/python.module
-	mkdir -p $(ROOT)/etc/profile.d
-	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
+	( \
+           modulefiles=`ls $(REDHAT.ROOT)/src/build-python-modules/*.module 2>/dev/null`; \
+           if test  -n "$${modulefiles}"; then \
+                for modulefile in $${modulefiles}; do \
+                    perl -pi -e "s!ROOT_PKGROOT!$(ROOT)!g" $${modulefile}; \
+                    bash $${modulefile}; \
+                done; \
+           fi \
+        )
+
 
 clean::
-	rm -rf $(ARCHIVENAME)-$(VERSION)
