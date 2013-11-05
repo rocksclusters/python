@@ -3,7 +3,8 @@ VERSION.MK.MASTER = version.mk
 VERSION.MK.MASTER.DIR = ../python-2
 VERSION.MK.INCLUDE = python2.version.mk
 
-include $(VERSION.MK.INCLUDE) 
+include $(VERSION.MK.INCLUDE)
+PKGROOT		= /usr/share/Modules/modulefiles
 NAME		= opt-python-modules
 RELEASE		= 1
 RPM.REQUIRES	= environment-modules
