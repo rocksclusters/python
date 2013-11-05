@@ -4,6 +4,6 @@ VERSION.MK.MASTER.DIR = ../python-2
 VERSION.MK.INCLUDE = python2.version.mk
 
 include $(VERSION.MK.INCLUDE) 
-NAME		= python-modules
+NAME		= opt-python-modules
 RELEASE		= 1
 RPM.REQUIRES	= environment-modules
