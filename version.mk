@@ -1,5 +1,5 @@
 ROLLNAME	= python
-RELEASE		= 0
+RELEASE		= 1
 COLOR		= dimgrey
 
 REDHAT.ROOT	= $(CURDIR)
