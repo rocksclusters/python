@@ -1,0 +1,24 @@
+#%Module1.0#####################################################################
+##
+## opt-python modulefile
+##
+## modulefiles/
+##
+proc ModulesHelp { } {
+	global pythonversion 
+
+	puts stderr "\t Use /opt/python/bin/python as your python"
+	puts stderr "\n\tVersion $pythonversion\n"
+}
+
+module-whatis	"opt-python"
+module-whatis	"Version: 2.7.3 and 3.2.1"
+
+# for Tcl script use only
+set	pythonversion 	@VERSION@
+set	pythonroot	/opt/python
+
+prepend-path PATH		$pythonroot/bin
+prepend-path LD_LIBRARY_PATH	$pythonroot/lib
+prepend-path LIBPATH 		$pythonroot/lib
+

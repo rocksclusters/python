@@ -1,5 +1,6 @@
-# $Id: bootstrap.sh,v 1.5 2012/12/14 21:54:16 clem Exp $
-
+#
+# $Id: Makefile,v 1.2 2012/11/27 00:49:01 phil Exp $
+#
 # @Copyright@
 # 
 # 				Rocks(r)
@@ -53,34 +54,35 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
 # @Copyright@
-
-# $Log: bootstrap.sh,v $
-# Revision 1.5  2012/12/14 21:54:16  clem
-# adding sqlite-devel to the boostrap so that support to slite3 is built into python
-#
-# Revision 1.4  2012/11/27 00:49:12  phil
-# Copyright Storm for Emerald Boa
-#
-# Revision 1.3  2012/05/06 05:49:19  phil
-# Copyright Storm for Mamba
-#
-# Revision 1.2  2011/07/23 02:31:16  phil
-# Viper Copyright
-#
-# Revision 1.1  2011/07/22 17:54:09  anoop
-# Added bootstrap script to python roll. Required for itself
-# and for the bio roll
 #
 
-. $ROCKSROOT/src/roll/etc/bootstrap-functions.sh
+PKGROOT = /usr/share/Modules/modulefiles
+REDHAT.ROOT = $(CURDIR)/../../
+RPM.PREFIX = $(PKGROOT)
 
+-include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
 
-#this is required only to compile sqlite3 support in python
-yum install sqlite-devel
+MODULESFILES = opt-python
 
-compile python-2
-install opt-python-27
-compile_and_install python-modules
+%: %.in
+	$(SED) $(SEDSCRIPT) $^ > $@
 
-compile numpy
-install opt-numpy
+pretar:: $(VERSION.MK.INCLUDE)
+
+$(VERSION.MK.INCLUDE): 
+	if [ -f $(VERSION.MK.MASTER.DIR)/$(VERSION.MK.MASTER) ]; then \
+		/bin/cp $(VERSION.MK.MASTER.DIR)/$(VERSION.MK.MASTER) $@; \
+	fi
+
+build: $(MODULESFILES)
+
+install:: $(MODULESFILES)
+	mkdir -p $(ROOT)/$(PKGROOT)
+	install -m 755 $(MODULESFILES) $(ROOT)/$(PKGROOT)
+
+clean::
+	rm -rf $(NAME).spec.in
+	rm -rf $(MODULESFILES)
+	rm -rf $(VERSION.MK.INCLUDE)
+
