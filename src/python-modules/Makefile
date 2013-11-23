@@ -63,7 +63,7 @@ RPM.PREFIX = $(PKGROOT)
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-MODULESFILES = python
+MODULESFILES = opt-python
 
 %: %.in
 	$(SED) $(SEDSCRIPT) $^ > $@

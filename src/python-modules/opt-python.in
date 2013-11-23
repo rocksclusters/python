@@ -1,6 +1,6 @@
 #%Module1.0#####################################################################
 ##
-## python modulefile
+## opt-python modulefile
 ##
 ## modulefiles/
 ##
@@ -11,7 +11,7 @@ proc ModulesHelp { } {
 	puts stderr "\n\tVersion $pythonversion\n"
 }
 
-module-whatis	"python"
+module-whatis	"opt-python"
 module-whatis	"Version: 2.7.3 and 3.2.1"
 
 # for Tcl script use only
