@@ -74,7 +74,9 @@ REDHAT.ROOT = $(CURDIR)/../../
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-PY.PATH = $(PKGROOT)/bin/python
+RPM.EXTRAS += "AutoReq: no"
+
+PY.PATH = $(PKGROOT)/bin/python2.7
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
