@@ -83,20 +83,18 @@ RPM.EXTRAS += "AutoReqProv: no"
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
-	#http://bugs.python.org/issue14572
-	cd $(ARCHIVENAME)-$(VERSION); patch -p1 < ../patch-sqlite3-Python-2.7.3
-	( 					\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		./configure --enable-shared --prefix=$(PKGROOT);\
-		$(MAKE);			\
+	(								\
+		cd $(ARCHIVENAME)-$(VERSION);				\
+		./configure --enable-shared --prefix=$(PKGROOT);	\
+		$(MAKE);						\
 	)
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
-	(									\
-		cd $(ARCHIVENAME)-$(VERSION);					\
-		$(MAKE) DESTDIR=$(ROOT) altinstall;				\
-		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 				\
+	(								\
+		cd $(ARCHIVENAME)-$(VERSION);				\
+		$(MAKE) DESTDIR=$(ROOT) altinstall;			\
+		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 			\
 	)
 	mkdir -p $(ROOT)/etc/profile.d
 	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
