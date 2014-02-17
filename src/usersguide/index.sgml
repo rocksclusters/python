@@ -1,7 +1,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
 	<!ENTITY preface    SYSTEM "preface.sgml">
 	<!ENTITY installing SYSTEM "installing.sgml">
-	<!ENTITY using SYSTEM "using.sgml">
+	<!ENTITY using      SYSTEM "using.sgml">
 	<!ENTITY copyrights SYSTEM "copyrights.sgml">
 	<!ENTITY % entities SYSTEM "entities.sgml">
 	%entities;
@@ -9,8 +9,7 @@
 
 <book>
 <bookinfo>
-
-	<title> python Roll: Users Guide </title>
+	<title>Python Roll Users Guide</title>
 
 	<subtitle>
 		<inlinemediaobject>
