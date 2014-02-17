@@ -58,8 +58,6 @@
 #
 #
 
-
-
 new_LD_PATH=/opt/python/lib
 
 if ! echo ${LD_LIBRARY_PATH} | /bin/grep -q ${new_LD_PATH} ; then
