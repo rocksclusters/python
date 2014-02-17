@@ -79,17 +79,17 @@ RPM.EXTRAS = "AutoReqProv: no"
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
-	( 					\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		./configure --enable-shared --prefix=$(PKGROOT);\
-		$(MAKE);			\
+	(								\
+		cd $(ARCHIVENAME)-$(VERSION);				\
+		./configure --enable-shared --prefix=$(PKGROOT);	\
+		$(MAKE);						\
 	)
 
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)
-	(					\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		$(MAKE) DESTDIR=$(ROOT) altinstall;\
+	(								\
+		cd $(ARCHIVENAME)-$(VERSION);				\
+		$(MAKE) DESTDIR=$(ROOT) altinstall;			\
 	)
 
 clean::
