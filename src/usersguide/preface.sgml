@@ -1,17 +1,15 @@
 <preface id="preface" xreflabel="preface">
 <title>Preface</title>
 
-
 <para>
-The python Roll installs and configures Python 2.7.2,
-Python 3.2.2 and NumPy.
+The Python Roll installs and configures Python 2.7.6, Python 3.3.4 and
+NumPy 1.8.0.
 </para>
 
-
 <para>
-Please visit the <ulink url="http://www.python.org">Python
-site</ulink> to learn more about their release and the individual
-software components.
+Please visit the <ulink url="http://www.python.org">Python website</ulink>
+and the <ulink url="http://www.numpy.org/">NumPy website</ulink> to learn
+more about these Python and NumPy releases.
 </para>
 
 </preface>
