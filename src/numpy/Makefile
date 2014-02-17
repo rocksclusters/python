@@ -80,15 +80,15 @@ PY.PATH = $(PKGROOT)/bin/python2.7
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
-	(\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		$(PY.PATH) setup.py build;	\
+	(							\
+		cd $(ARCHIVENAME)-$(VERSION);			\
+		$(PY.PATH) setup.py build;			\
 	)
 
 install test::
-	(\
-		cd $(ARCHIVENAME)-$(VERSION);	\
-		$(PY.PATH) setup.py $@ --root=$(ROOT)/; \
+	(							\
+		cd $(ARCHIVENAME)-$(VERSION);			\
+		$(PY.PATH) setup.py $@ --root=$(ROOT)/;		\
 	)
 
 clean::
