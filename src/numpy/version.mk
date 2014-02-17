@@ -1,4 +1,4 @@
-NAME = opt-numpy-27
-VERSION = 1.6.2
-ARCHIVENAME = numpy
-RELEASE = 1
+NAME		= opt-numpy-27
+VERSION		= 1.8.0
+ARCHIVENAME	= numpy
+RELEASE		= 1
