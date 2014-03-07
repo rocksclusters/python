@@ -81,5 +81,7 @@ yum install sqlite-devel
 compile python-2
 install opt-python-27
 
+compile_and_install opt-python-modules
+
 compile numpy
 install opt-numpy
