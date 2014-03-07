@@ -33,4 +33,5 @@
 	<package>roll-python-usersguide</package>
 
 	<package>opt-numpy-27</package>
+	<package>opt-python-modules</package>
 </kickstart>
