@@ -83,5 +83,7 @@ install opt-python-27
 
 compile_and_install opt-python-modules
 
+module load opt-python
+
 compile numpy
 install opt-numpy
