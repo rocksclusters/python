@@ -95,6 +95,11 @@ install::
 		cd $(ARCHIVENAME)-$(VERSION);				\
 		$(MAKE) DESTDIR=$(ROOT) altinstall;			\
 		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 			\
+		cd $(ROOT)/$(PKGROOT)/bin; 				\
+		ln -s python2 python; 					\
+		ln -s python2.7 python2; 				\
+		ln -s python2.7-config python2-config; 			\
+		ln -s python2-config python-config;			\
 	)
 	mkdir -p $(ROOT)/etc/profile.d
 
