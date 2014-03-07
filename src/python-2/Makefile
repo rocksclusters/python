@@ -97,7 +97,6 @@ install::
 		rm -rf $(ROOT)/$(PKGROOT)/bin/2to3; 			\
 	)
 	mkdir -p $(ROOT)/etc/profile.d
-	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
 
 clean::
 	rm -rf $(ARCHIVENAME)-$(VERSION)
