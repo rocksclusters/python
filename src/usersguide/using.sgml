@@ -2,12 +2,71 @@
 
 <title>Using the Python Roll</title>
 
+<section id="environment_modules" xreflabel="Environment Modules for Python">
+	<title>Environment Modules for Python</title>
+
+<para>
+As of Rocks 6.2 (Sidewinder), Environment Modules are utilized to control
+Python path names.  
+</para>
+
+<itemizedlist>
+
+<listitem>
+<para>
+To see the currently loaded modules:
+</para>
+
+<screen>
+% module list
+Currently Loaded Modulefiles:
+  1) rocks-openmpi
+%
+</screen>
+</listitem>
+
+<listitem>
+<para>
+To see available modules:
+</para>
+
+<screen>
+% module avail
+------------------------ /usr/share/Modules/modulefiles ------------------------
+dot           module-info   null          use.own
+module-cvs    modules       opt-python    rocks-openmpi
+
+%
+</screen>
+
+</listitem>
+<listitem>
+<para>
+To load the opt-python module:
+</para>
+
+<screen>
+% module load opt-python
+% module list
+Currently Loaded Modulefiles:
+  1) rocks-openmpi   2) opt-python
+</screen>
+</listitem>
+</itemizedlist>
+
+</section>
+
 <section id="using-python" xreflabel="Using the Python Roll">
 <title>Using the Python Roll</title>
 
 <para>
 The Python roll installs Python versions 2.7.6 and 3.3.4.  These are
 installed in <filename class="directory">/opt/python</filename>.
+</para>
+
+<para>
+The Python roll installs Environment Modules files for Python 2.7.6
+and 3.3.4. These are installed in <filename class="directory">/usr/share/Modules/modulefiles</filename>.
 </para>
 
 <para>
