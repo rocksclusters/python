@@ -101,6 +101,8 @@ install::
 		ln -s python2.7-config python2-config; 			\
 		ln -s python2-config python-config;			\
 	)
+	mkdir -p $(ROOT)/etc/profile.d
+	install rocks-python.sh rocks-python.csh $(ROOT)/etc/profile.d/
 
 clean::
 	rm -rf $(ARCHIVENAME)-$(VERSION)
