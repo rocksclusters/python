@@ -2,7 +2,7 @@
 <title>Preface</title>
 
 <para>
-The Python Roll installs and configures Python 2.7.6, Python 3.3.4 and
+The Python Roll installs and configures Python 2.7.6, Python 3.4.0 and
 NumPy 1.8.0.
 </para>
 
