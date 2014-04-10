@@ -60,13 +60,13 @@ Currently Loaded Modulefiles:
 <title>Using the Python Roll</title>
 
 <para>
-The Python roll installs Python versions 2.7.6 and 3.3.4.  These are
+The Python roll installs Python versions 2.7.6 and 3.4.0.  These are
 installed in <filename class="directory">/opt/python</filename>.
 </para>
 
 <para>
 The Python roll installs Environment Modules files for Python 2.7.6
-and 3.3.4. These are installed in <filename class="directory">/usr/share/Modules/modulefiles</filename>.
+and 3.4.0. These are installed in <filename class="directory">/usr/share/Modules/modulefiles</filename>.
 </para>
 
 <para>
