@@ -6,5 +6,5 @@ VERSION.MK.INCLUDE = python2.version.mk
 include $(VERSION.MK.INCLUDE) 
 PKGROOT		= /usr/share/Modules/modulefiles
 NAME		= opt-python-modules
-RELEASE		= 1
+RELEASE		= 2
 RPM.REQUIRES	= environment-modules
