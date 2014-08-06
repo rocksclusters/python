@@ -56,9 +56,10 @@
 #
 #
 
-set new_LD_PATH=/opt/python/lib
 
-echo ${LD_LIBRARY_PATH} | /bin/grep -q ${new_LD_PATH}
-if ( $? != 0) then
-       	setenv LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:${new_LD_PATH}"
+set new_LD_LIBRARY_PATH=/opt/python/lib
+if ( ${?LD_LIBRARY_PATH} ) then
+	setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:${new_LD_LIBRARY_PATH}
+else
+	setenv LD_LIBRARY_PATH $new_LD_LIBRARY_PATH
 endif
