@@ -1,3 +1,5 @@
 a2c02c5fb2ab8cf630982cddc6821e74f5769974  src/numpy/numpy-1.8.0.tar.gz
-8328d9f1d55574a287df384f4931a3942f03da64  src/python-2/Python-2.7.6.tgz
-0561d2a24067c03ed2b29c58a12e126e86ccdc58  src/python-3/Python-3.3.4.tgz
+511960dd78451a06c9df76509635aeec05b2051a  src/python-2/Python-2.7.8.tgz
+a4d96b5cad5ed04cf02c9fcedaaaab3491bc885f  src/python-3/Python-3.3.6.tgz
+c558c24b18c784d1d249f6f3829ae4cd8e7acf7b  src/setuptools3/setuptools-6.1.tar.gz
+c558c24b18c784d1d249f6f3829ae4cd8e7acf7b  src/setuptools/setuptools-6.1.tar.gz

@@ -75,19 +75,25 @@ include Rules.mk
 
 RPM.EXTRAS += "AutoReq: no"
 
-PY.PATH = $(PKGROOT)/bin/python2.7
+MODULE = module
+MODULE-NAME = opt-python
+PYTHON = python2.7
 
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
-		$(PY.PATH) setup.py build;			\
+		$(MODULE) load $(MODULE-NAME);			\
+		$(PYTHON) setup.py build;			\
+		$(MODULE) unload $(MODULE-NAME);		\
 	)
 
 install test::
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
+		$(MODULE) load $(MODULE-NAME);			\
 		$(PY.PATH) setup.py $@ --root=$(ROOT)/;		\
+		$(MODULE) unload $(MODULE-NAME);		\
 	)
 
 clean::

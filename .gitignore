@@ -31,5 +31,10 @@ Rolls.mk
 # --- BEGIN --- binaries files
 src/numpy/numpy-1.8.0.tar.gz
 src/python-2/Python-2.7.6.tgz
+src/python-2/Python-2.7.8.tgz
 src/python-3/Python-3.3.4.tgz
+src/python-3/Python-3.3.6.tgz
+src/setuptools/setuptools-6.1.tar.gz
+src/setuptools3/setuptools-6.1.tar.gz
+
 # --- END ---

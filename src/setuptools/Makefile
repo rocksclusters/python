@@ -1,4 +1,4 @@
-# $Id: bootstrap.sh,v 1.5 2012/12/14 21:54:16 clem Exp $
+# $Id: Makefile,v 1.4 2012/11/27 00:49:12 phil Exp $
 
 # @Copyright@
 # 
@@ -53,10 +53,7 @@
 # 
 # @Copyright@
 
-# $Log: bootstrap.sh,v $
-# Revision 1.5  2012/12/14 21:54:16  clem
-# adding sqlite-devel to the boostrap so that support to slite3 is built into python
-#
+# $Log: Makefile,v $
 # Revision 1.4  2012/11/27 00:49:12  phil
 # Copyright Storm for Emerald Boa
 #
@@ -66,35 +63,38 @@
 # Revision 1.2  2011/07/23 02:31:16  phil
 # Viper Copyright
 #
-# Revision 1.1  2011/07/22 17:54:09  anoop
-# Added bootstrap script to python roll. Required for itself
-# and for the bio roll
+# Revision 1.1  2011/07/14 02:24:33  anoop
+# Update python
+# Add numpy
 #
 
-if [ ! -f "$ROLLSROOT/../../bin/get_sources.sh" ]; then
-	echo "To compile this roll on Rocks 6.1.1 or older you need to install a newer rocks-devel rpm.
-Install it with:
-rpm -Uvh https://googledrive.com/host/0B0LD0shfkvCRRGtadUFTQkhoZWs/rocks-devel-6.2-3.x86_64.rpm
-If you need an older version of this roll you can get it from:
-https://github.com/rocksclusters-attic"
-	exit 1
-fi
+PKGROOT = /opt/python
+REDHAT.ROOT = $(CURDIR)/../../
+-include $(ROCKSROOT)/etc/Rules.mk
+include Rules.mk
 
-. $ROLLSROOT/etc/bootstrap-functions.sh
+RPM.EXTRAS += "AutoReq: no"
 
+MODULE = module
+MODULE-NAME = opt-python
+PYTHON = python2.7
 
-#this is required only to compile sqlite3 support in python
-yum install sqlite-devel
+build:
+	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
+	(							\
+		cd $(ARCHIVENAME)-$(VERSION);			\
+		$(MODULE) load  $(MODULE-NAME); 		\
+		$(PYTHON) setup.py build;			\
+		$(MODULE) unload  $(MODULE-NAME); 		\
+	)
 
-compile python-2
-install opt-python-27
+install test::
+	(							\
+		cd $(ARCHIVENAME)-$(VERSION);			\
+		$(MODULE) load  $(MODULE-NAME); 		\
+		$(PYTHON) setup.py $@ --root=$(ROOT)/;		\
+		$(MODULE) unload  $(MODULE-NAME); 		\
+	)
 
-compile python-3
-install opt-python-33
-
-compile_and_install opt-python-modules
-
-module load opt-python
-
-compile numpy
-install opt-numpy
+clean::
+	rm -rf $(ARCHIVENAME)-$(VERSION)
