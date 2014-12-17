@@ -84,7 +84,8 @@ build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
 	(								\
 		cd $(ARCHIVENAME)-$(VERSION);				\
-		./configure --enable-shared --prefix=$(PKGROOT);	\
+		./configure --enable-shared --enable-ipv6 		\
+			--with-threads --prefix=$(PKGROOT);		\
 		$(MAKE);						\
 	)
 
