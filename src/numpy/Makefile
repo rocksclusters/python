@@ -92,7 +92,7 @@ install test::
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
 		$(MODULE) load $(MODULE-NAME);			\
-		$(PY.PATH) setup.py $@ --root=$(ROOT)/;		\
+		$(PYTHON) setup.py $@ --root=$(ROOT)/;		\
 		$(MODULE) unload $(MODULE-NAME);		\
 	)
 
