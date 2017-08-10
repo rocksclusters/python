@@ -10,6 +10,5 @@ RPM.FILES	= \
 $(PKGROOT)/lib/* \\n \
 $(PKGROOT)/bin/* \\n \
 $(PKGROOT)/include/* \\n \
-$(PKGROOT)/share/man/man1/* \\n \
-/etc/profile.d/*
+$(PKGROOT)/share/man/man1/* \\n
 
