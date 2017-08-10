@@ -90,11 +90,9 @@ compile python-2
 install opt-python-27
 
 compile python-3
-install opt-python-33
+install opt-python-3
 
 compile_and_install opt-python-modules
 
-module load opt-python
-
-compile numpy
-install opt-numpy
+compile setuptools
+install opt-setuptools-27

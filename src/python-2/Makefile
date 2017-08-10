@@ -77,9 +77,6 @@ REDHAT.ROOT = $(CURDIR)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
-
-RPM.EXTRAS += "AutoReqProv: no"
-
 build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).$(TARBALL_POSTFIX) | $(TAR) -xf -
 	(								\

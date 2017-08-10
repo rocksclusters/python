@@ -8,3 +8,4 @@ PKGROOT		= /usr/share/Modules/modulefiles
 NAME		= opt-python-modules
 RELEASE		= 2
 RPM.REQUIRES	= environment-modules
+RPM.FILES	= $(PKGROOT)/*

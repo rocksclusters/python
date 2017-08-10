@@ -84,6 +84,7 @@ build:
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
 		$(MODULE) load  $(MODULE-NAME); 		\
+		$(PYTHON) bootstrap.py;				\
 		$(PYTHON) setup.py build;			\
 		$(MODULE) unload  $(MODULE-NAME); 		\
 	)
