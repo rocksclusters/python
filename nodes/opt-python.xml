@@ -35,5 +35,6 @@
 
 	<package>opt-numpy-27</package>
 	<package>opt-setuptools-27</package>
+	<package>opt-dateutil-27</package>
 	<package>opt-python-modules</package>
 </kickstart>
