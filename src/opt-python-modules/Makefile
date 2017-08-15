@@ -57,7 +57,6 @@
 
 PKGROOT = /usr/share/Modules/modulefiles
 REDHAT.ROOT = $(CURDIR)/../../
-RPM.PREFIX = $(PKGROOT)
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
