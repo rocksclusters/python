@@ -84,7 +84,7 @@ fi
 
 
 #this is required only to compile sqlite3 support in python
-yum install sqlite-devel
+yum -y install sqlite-devel
 
 compile python-2
 install opt-python-27
