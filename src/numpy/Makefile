@@ -75,6 +75,7 @@ include Rules.mk
 
 RPM.EXTRAS += "AutoReq: no"
 
+MODULE_PROFILE = /etc/profile.d/modules.sh
 MODULE = module
 MODULE-NAME = opt-python
 PYTHON = python2.7
@@ -83,6 +84,7 @@ build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
+		source $(MODULE_PROFILE); 			\
 		$(MODULE) load $(MODULE-NAME);			\
 		$(PYTHON) setup.py build;			\
 		$(MODULE) unload $(MODULE-NAME);		\
@@ -91,6 +93,7 @@ build:
 install test::
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
+		source $(MODULE_PROFILE); 			\
 		$(MODULE) load $(MODULE-NAME);			\
 		$(PYTHON) setup.py $@ --root=$(ROOT)/;		\
 		$(MODULE) unload $(MODULE-NAME);		\

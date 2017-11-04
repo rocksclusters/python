@@ -84,7 +84,7 @@ build:
 	gunzip -c $(ARCHIVENAME)-$(VERSION).tar.gz | $(TAR) -xf -
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
-		. $(MODULE_PROFILE); 				\
+		source $(MODULE_PROFILE); 				\
 		$(MODULE) load  $(MODULE-NAME); 		\
 		$(PYTHON) bootstrap.py;				\
 		$(PYTHON) setup.py build;			\
@@ -94,7 +94,7 @@ build:
 install test::
 	(							\
 		cd $(ARCHIVENAME)-$(VERSION);			\
-		. $(MODULE_PROFILE); 				\
+		source $(MODULE_PROFILE); 				\
 		$(MODULE) load  $(MODULE-NAME); 		\
 		$(PYTHON) setup.py $@ --root=$(ROOT)/;		\
 		$(MODULE) unload  $(MODULE-NAME); 		\
